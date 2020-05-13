@@ -25,6 +25,24 @@ app.post("/" , function(req,res){
 
 });
 
+app.get("/bmi", function(req,res){
+    
+  res.sendFile(__dirname + "/bmiCalculator.html");
+  
+});
+
+app.post("/bmi", function(req,res){
+    
+  var weight = parseFloat(req.body.peso);
+  var height = parseFloat(req.body.altura);
+
+  var result = weight / (height * height);
+
+  res.send("O teu BMI é " + result);
+  
+});
+
+
 
 app.listen(port, function(){
     console.log("Server port: " + port);
